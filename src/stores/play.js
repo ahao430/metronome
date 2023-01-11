@@ -139,11 +139,13 @@ export const usePlayStore = defineStore('play', () => {
     }, rhythmNoteTime)
 
     // 呼吸样式
-    const styleTime = rhythmNoteTime * 0.8
-    rhythmCircleStyle.value = `transform: scale(1.5); transition: all linear ${styleTime / 1000}s; opacity: 0.5;`
-    timer2 = setTimeout(() => {
-      rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
-    }, styleTime)
+    if (note) {
+      const styleTime = rhythmNoteTime * 0.8
+      rhythmCircleStyle.value = `transform: scale(1.5); transition: all linear ${styleTime / 1000}s; opacity: 0.5;`
+      timer2 = setTimeout(() => {
+        rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
+      }, styleTime)
+    }
   }
 
   // TODO: 定时器逻辑准备放到web workers里
