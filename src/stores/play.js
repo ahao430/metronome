@@ -41,6 +41,7 @@ export const usePlayStore = defineStore('play', () => {
     rhythmCount.value = 0
     player.pause()
     player2.pause()
+    rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
     if (timer) {
       clearTimeout(timer)
       timer = null
