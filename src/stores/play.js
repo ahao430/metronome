@@ -6,8 +6,8 @@ import {useBeatStore} from "@/stores/beat"
 import {useSpeedStore} from "@/stores/speed"
 
 export const usePlayStore = defineStore('play', () => {
-  const player = new Audio('/audio/beat1.mp3')
-  const player2 = new Audio('/audio/beat2.mp3')
+  const player = new Audio('./audio/beat1.mp3')
+  const player2 = new Audio('./audio/beat2.mp3')
 
   window.player = player
 
@@ -112,34 +112,26 @@ export const usePlayStore = defineStore('play', () => {
     // 定时器，播放下一个音符
     timer = setTimeout(() => {
       let newRhythmCount = rhythmCount.value + 1
-      if (newRhythmCount === rhythmItem.length) {
-        if (newRhythmCount === rhythmNotesLen) {
+      if (newRhythmCount >= rhythmItem.length) {
+        if (newRhythmCount >= rhythmNotesLen) {
           // 新的节奏型
           newRhythmCount = 0
           rhythmCount.value = newRhythmCount
-          
-          let newBeatCount = beatCount.value + 1
-
-          if (newBeatCount === beat[0]) {
-            newBeatCount = 0
-            // 新的节拍
-            beatCount.value = newBeatCount
-            playBeat()
-          } else {
-            beatCount.value = newBeatCount
-            playRhythm()
-          }
-          
         } else {
           // 当前节奏型新的一拍
           rhythmCount.value = newRhythmCount
+        }
 
-          let newBeatCount = beatCount.value + 1
+        let newBeatCount = beatCount.value + 1
+        if (newBeatCount >= beat[0]) {
+          newBeatCount = 0
+          // 新的节拍
           beatCount.value = newBeatCount
-          
+          playBeat()
+        } else {
+          beatCount.value = newBeatCount
           playRhythm()
         }
-        // 新的一拍
       } else {
         rhythmCount.value = newRhythmCount
         playNote()

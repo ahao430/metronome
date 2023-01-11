@@ -45,8 +45,9 @@ const {play, stop} = store
       background: var(--color-grey);
       border-radius: 50%;
       margin: 0 10px;
+      transition: all ease 0.1s;
       &.active{
-        background: var(--color-orange)
+        background: var(--color-orange);
       }
     }
   }

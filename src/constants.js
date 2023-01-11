@@ -1,5 +1,5 @@
-export const MIN_SPEED = 5
-export const MAX_SPEED = 500
+export const MIN_SPEED = 40
+export const MAX_SPEED = 400
 export const DEF_SPEED = 120
 
 export const DEF_BEAT = [4,4]
