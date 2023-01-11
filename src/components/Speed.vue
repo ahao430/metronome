@@ -1,4 +1,5 @@
 <script setup>
+// 速度 bpm
 import {useSpeedStore} from "@/stores/speed"
 import {MIN_SPEED, MAX_SPEED, DEF_SPEED} from '@/constants'
 import { storeToRefs } from 'pinia'
@@ -10,18 +11,20 @@ const {increment, decrement, setSpeed} = store
 
 <template>
   <section class="section-speed">
+    <div class="row input">
+      <nut-button class="btn btn-minus" @click="decrement(10)">-10</nut-button>
+      <nut-button class="btn btn-minus" @click="decrement(1)">-1</nut-button>
+      <span class="title">BPM: </span>
+      <input type="number" :value="store.speed" @change="e => setSpeed(e.target.value)">
+      <nut-button class="btn btn-add" @click="increment(1)">+1</nut-button>
+      <nut-button class="btn btn-add" @click="increment(10)">+10</nut-button>
+      <!-- <nut-inputnumber v-model="store.speed" :min="MIN_SPEED" :max="MAX_SPEED" /> -->
+    </div>
     <div class="row range">
-      <span class="section-title">速度:</span>
+      <!-- <span class="section-title">BPM:</span> -->
       <span>{{MIN_SPEED}}</span>
       <input type="range" :min="MIN_SPEED" :max="MAX_SPEED" :value="store.speed" @change="e => setSpeed(e.target.value)">
       <span>{{MAX_SPEED}}</span>
-    </div>
-    <div class="row input">
-      <span class="btn btn-minus" @click="decrement(10)">-10</span>
-      <span class="btn btn-minus" @click="decrement(1)">-1</span>
-      <input type="number" :value="store.speed" @change="e => setSpeed(e.target.value)">
-      <span class="btn btn-add" @click="increment(1)">+1</span>
-      <span class="btn btn-add" @click="increment(10)">+10</span>
     </div>
   </section>
 </template>  
@@ -44,7 +47,7 @@ const {increment, decrement, setSpeed} = store
     align-items: center;
     input{ 
       flex: 0 0 auto;
-      width: 300px;
+      width: 500px;
     }
     span{
       display: inline-block;
@@ -52,19 +55,29 @@ const {increment, decrement, setSpeed} = store
       margin: 0 10px;
       padding: 10px;
       border-radius: 6px;
-      color: var(--color-black);
+      color: var(--color-grey2);
     }
   }
   &.input{
     display: flex;
     justify-content: center;
     align-items: center;
+    .title{
+      color: var(--color-black);
+      margin: 25px 0 0 20px;
+      font-size: 40px;
+      display: inline-block;
+    }
     input{ 
       flex: 0 0 auto;
-      width: 250px;
-      font-size: 40px;
+      width: 120px;
+      font-size: 70px;
       text-align: center;
       height: 100px;
+      background: transparent;
+      border: none;
+      outline: none;
+      margin: 10px 20px 0 0;
     }
     .btn{
       flex: 0 0 auto;
