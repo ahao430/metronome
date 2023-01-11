@@ -64,20 +64,20 @@ const {increment, decrement, setSpeed} = store
     align-items: center;
     .title{
       color: var(--color-black);
-      margin: 25px 0 0 20px;
+      margin: 20px 0 0 20px;
       font-size: 40px;
       display: inline-block;
     }
     input{ 
       flex: 0 0 auto;
-      width: 120px;
-      font-size: 70px;
+      width: 130px;
+      font-size: 60px;
       text-align: center;
       height: 100px;
       background: transparent;
       border: none;
       outline: none;
-      margin: 10px 20px 0 0;
+      margin: 10px 10px 0 0;
     }
     .btn{
       flex: 0 0 auto;
@@ -87,8 +87,8 @@ const {increment, decrement, setSpeed} = store
       padding: 10px;
       border-radius: 6px;
       color: var(--color-white);
-      min-width: 100px;
-      height: 100px;
+      min-width: 80px;
+      height: 80px;
       text-align: center;
     }
   }
