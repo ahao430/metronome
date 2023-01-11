@@ -79,3 +79,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.nut-cell__value{
+  color: var(--color-orange) !important;
+  font-weight: bold;
+  font-size: 30px !important;
+}

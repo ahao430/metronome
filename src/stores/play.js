@@ -14,6 +14,7 @@ export const usePlayStore = defineStore('play', () => {
   const isPlaying = ref(false)
   const beatCount = ref(0)
   const rhythmCount = ref(0)
+  const rhythmCircleStyle = ref('')
 
   const ONE_MINUTE = 60 * 1000
 
@@ -105,10 +106,8 @@ export const usePlayStore = defineStore('play', () => {
     }
     // 计算间隔时间
     const oneBeatTime = ONE_MINUTE / speed
-    const noteTime = oneBeatTime / rhythmItem.length
+    const rhythmNoteTime = oneBeatTime / rhythmItem.length
     
-
-
     // 定时器，播放下一个音符
     timer = setTimeout(() => {
       let newRhythmCount = rhythmCount.value + 1
@@ -136,14 +135,17 @@ export const usePlayStore = defineStore('play', () => {
         rhythmCount.value = newRhythmCount
         playNote()
       }
-    }, noteTime)
-    // timer2 = setTimeout(() => {
-    //   player.pause()
-    //   player2.pause()
-    // }, noteTime * 0.75)
+    }, rhythmNoteTime)
+
+    // 呼吸样式
+    const styleTime = rhythmNoteTime * 0.8
+    rhythmCircleStyle.value = `transform: scale(1.5); transition: all linear ${styleTime / 1000}s; opacity: 0.5;`
+    timer2 = setTimeout(() => {
+      rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
+    }, styleTime)
   }
 
   // TODO: 定时器逻辑准备放到web workers里
 
-  return { isPlaying, play, stop, beatCount}
+  return { isPlaying, play, stop, beatCount, rhythmCircleStyle}
 })

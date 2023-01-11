@@ -17,7 +17,7 @@ const {play, stop} = store
         <div :class="['li', {active: store.isPlaying && index === store.beatCount}]" v-for="(item,index) in beatStore.beatTotal" :key="item"></div>
       </div>
     </div>
-    <!-- TODO: 给按钮按照节奏型加上呼吸灯动效 -->
+    <div class="rhythm-circle" :style="store.rhythmCircleStyle"></div>
     <div class="btn-play">
       <nut-icon v-if="store.isPlaying" name="play-stop" size="5.5rem" @click="stop"></nut-icon>
       <nut-icon v-else name="play-start" size="6rem" @click="play"></nut-icon>
@@ -27,11 +27,25 @@ const {play, stop} = store
 
 <style lang="scss" scoped>
 .btn-play{
+  position: relative;
+  z-index: 2;
   width: 750px;
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.rhythm-circle{
+  position: absolute;
+  z-index: 1;
+  width: 500px;
+  height: 500px;
+  left: 125px;
+  border-radius: 50%;
+  border: 3px solid var(--color-orange);
+  transform: scale(0);
+  opacity: 0.5;
+  transition: none;
 }
 .preview{
   .ul{
