@@ -6,10 +6,14 @@ import {useBeatStore} from "@/stores/beat"
 import {useSpeedStore} from "@/stores/speed"
 
 export const usePlayStore = defineStore('play', () => {
-  const player = document.getElementById('audio1')
-  const player2 = document.getElementById('audio2')
+  // const player = document.getElementById('audio1')
+  // const player2 = document.getElementById('audio2')
 
-  window.player = player
+  const player = new Audio('./audio/beat1.mp3')
+  const player2 = new Audio('./audio/beat2.mp3')
+
+  player.volumn = 1
+  player2.volumn = 1
 
   const isPlaying = ref(false)
   const beatCount = ref(0)
@@ -27,6 +31,8 @@ export const usePlayStore = defineStore('play', () => {
   let timer
   let timer2
 
+  // const isIos = /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)
+
   beat = useBeatStore().beat
 
   function play() {
@@ -39,7 +45,9 @@ export const usePlayStore = defineStore('play', () => {
     isPlaying.value = false
     beatCount.value = 0
     rhythmCount.value = 0
+    player.currentTime = 0;
     player.pause()
+    player2.currentTime = 0;
     player2.pause()
     rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
     if (timer) {
@@ -84,8 +92,8 @@ export const usePlayStore = defineStore('play', () => {
     // 一个节奏型可能有多拍
     speed = useSpeedStore().speed
     // 调整播放倍速
-    player.playbackRate = Math.max(1, Math.min(10, speed / rhythmRate))
-    player2.playbackRate = player.playbackRate
+      player.playbackRate = Math.max(1, Math.min(10, speed / rhythmRate))
+      player2.playbackRate = player.playbackRate
 
     const rhythmItemIndex = beatCount.value % rhythm.length 
     // 播放音频
@@ -99,9 +107,11 @@ export const usePlayStore = defineStore('play', () => {
     if (note) {
       // 播放
       if (heavy) {
+        player.currentTime = 0;
         player.play()
         heavy = false
       } else {
+        player2.currentTime = 0;
         player2.play()
       }
     }

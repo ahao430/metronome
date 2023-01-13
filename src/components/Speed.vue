@@ -56,6 +56,7 @@ const {increment, decrement, setSpeed} = store
       padding: 10px;
       border-radius: 6px;
       color: var(--color-grey2);
+      font-size: 40px;
     }
   }
   &.input{
@@ -71,7 +72,7 @@ const {increment, decrement, setSpeed} = store
     input{ 
       flex: 0 0 auto;
       width: 130px;
-      font-size: 60px;
+      font-size: 50px;
       text-align: center;
       height: 100px;
       background: transparent;
