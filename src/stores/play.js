@@ -6,8 +6,8 @@ import {useBeatStore} from "@/stores/beat"
 import {useSpeedStore} from "@/stores/speed"
 
 export const usePlayStore = defineStore('play', () => {
-  const player = new Audio('./audio/beat1.mp3')
-  const player2 = new Audio('./audio/beat2.mp3')
+  const player = document.getElementById('audio1')
+  const player2 = document.getElementById('audio2')
 
   window.player = player
 
