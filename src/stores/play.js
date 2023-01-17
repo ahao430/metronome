@@ -59,6 +59,12 @@ export const usePlayStore = defineStore('play', () => {
       timer2 = null
     }
   }
+  function restart () {
+    if (isPlaying.value) {
+      stop()
+      play()
+    }
+  }
   
   // 播放整个小节
   function playBeat () {
@@ -160,5 +166,5 @@ export const usePlayStore = defineStore('play', () => {
 
   // TODO: 定时器逻辑准备放到web workers里
 
-  return { isPlaying, play, stop, beatCount, rhythmCircleStyle}
+  return { isPlaying, play, stop, restart, beatCount, rhythmCircleStyle}
 })

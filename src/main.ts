@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
-import 'amfe-flexible'
+// import 'amfe-flexible'
+import './rem.js'
 
 import './assets/main.css'
 import { 

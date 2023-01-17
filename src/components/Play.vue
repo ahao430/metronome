@@ -1,11 +1,25 @@
 <script setup>
 // 播放
+import {ref, watch} from 'vue'
 import {usePlayStore} from "@/stores/play"
 import {useBeatStore} from "@/stores/beat"
+import {useRhythmStore} from "@/stores/rhythm"
+import {useSpeedStore} from "@/stores/speed"
 
 const beatStore = useBeatStore()
+const rhythmStore = useRhythmStore()
+const speedStore = useSpeedStore()
 const store = usePlayStore()
-const {play, stop} = store
+const {play, stop, restart} = store
+
+watch([
+  () => beatStore.beat, 
+  () => rhythmStore.rhythm, 
+  () => speedStore.speed
+], () => {
+  console.log('restart')
+  restart()
+})
 
 </script>
 

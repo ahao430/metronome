@@ -1,6 +1,5 @@
 @import './base.css';
 html, body{
-  /* max-width: 750PX; */
   margin: 0 auto;
 }
 #app {
