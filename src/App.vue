@@ -3,6 +3,7 @@ import Speed from "./components/Speed.vue";
 import Rhythm from "./components/Rhythm.vue";
 import Beat from "./components/Beat.vue";
 import Play from "./components/Play.vue";
+import Voice from "./components/Voice.vue";
 
 </script>
 
@@ -11,6 +12,7 @@ import Play from "./components/Play.vue";
   <main>
     <Speed></Speed>
     <div class="flex">
+      <Voice></Voice>
       <Beat></Beat>
       <Rhythm></Rhythm>
     </div>

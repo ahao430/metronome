@@ -2,9 +2,9 @@
   "name": "metronome",
   "version": "0.0.0",
   "private": true,
-  "engines" : {
-    "npm" : ">=8.0.0 <9.0.0",
-    "node" : ">=16.0.0 <17.0.0"
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
   },
   "scripts": {
     "start": "vite",
@@ -20,6 +20,7 @@
     "@nutui/nutui": "^3.3.1",
     "amfe-flexible": "^2.2.1",
     "pinia": "^2.0.28",
+    "speak-tts": "^2.0.8",
     "vue": "^3.2.45"
   },
   "devDependencies": {

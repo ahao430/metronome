@@ -3190,6 +3190,11 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.npmmirror.com/spdx-license-ids/-/spdx-license-ids-3.0.12.tgz#69077835abe2710b65f03969898b6637b505a779"
   integrity sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==
 
+speak-tts@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npmmirror.com/speak-tts/-/speak-tts-2.0.8.tgz#9ed6660fcd710840fcc01144e73ba5ea35f99c1e"
+  integrity sha512-VY6Q6mRjdou6bF+x0LspvM7GJhBxHx8CLyGPTNQQ7jrztiGutyI4QNZn0cA17c4uk0FnFbA4PaMI3skeZ6PiFg==
+
 string.prototype.padend@^3.0.0:
   version "3.1.4"
   resolved "https://registry.npmmirror.com/string.prototype.padend/-/string.prototype.padend-3.1.4.tgz#2c43bb3a89eb54b6750de5942c123d6c98dd65b6"

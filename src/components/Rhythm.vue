@@ -16,7 +16,7 @@ const confirm = ( { selectedValue, selectedOptions })=>{
 
 <template>
   <section class="section-rhythm" @click="()=>{show = true}">
-    <nut-cell title="节奏: " :desc="store.rhythm.name" >
+    <nut-cell title="" :desc="store.rhythm.name" >
     </nut-cell>
     <img :src="store.rhythm.img" alt="" />
   </section>  

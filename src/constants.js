@@ -23,3 +23,9 @@ export const RHYTHM_OPTIONS = [
   { id: 6, name: '民谣扫弦', value: [[1, 0, 0,0], [1,0,1,1]], img: './img/6.png', rate: 10},
   { id: 7, name: '民谣扫弦2', value: [[1, 0, 1, 1], [0,1,1,1]], img: './img/7.png', rate: 10},
 ]
+
+export const DEF_VOICE = 'hit'
+export const VOICE_OPTIONS = [
+  {label: '敲击声', value: 'hit'},
+  {label: '人声', value: 'human'},
+]

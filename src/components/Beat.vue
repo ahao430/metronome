@@ -19,7 +19,7 @@ const confirm = ( { selectedValue, selectedOptions })=>{
     <!-- <select :value="store.beat" @change="val => setBeat(e.target.value)">
       <option v-for="option in BEAT_OPTIONS" :key="option" :value="option">{{option.join('/')}}</option>
     </select> -->
-    <nut-cell title="拍子: " :desc="store.beatText" @click="()=>{show = true}"></nut-cell>
+    <nut-cell title="" :desc="store.beatText" @click="()=>{show = true}"></nut-cell>
   </section>  
   <nut-picker
     v-model:visible="show"
@@ -35,7 +35,8 @@ const confirm = ( { selectedValue, selectedOptions })=>{
 <style lang="scss" scoped>
 .section-beat{
   flex: 0 0 auto;
-  width: 300px;
+  width: 200px;
   padding: 20px;
+  text-align: center;
 }
 </style>

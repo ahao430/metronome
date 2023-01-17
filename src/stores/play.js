@@ -4,6 +4,8 @@ import {ref, computed} from 'vue'
 import {useRhythmStore} from "@/stores/rhythm"
 import {useBeatStore} from "@/stores/beat"
 import {useSpeedStore} from "@/stores/speed"
+import {useVoiceStore} from "@/stores/voice"
+import Speech from 'speak-tts' //
 
 export const usePlayStore = defineStore('play', () => {
   // const player = document.getElementById('audio1')
@@ -11,6 +13,14 @@ export const usePlayStore = defineStore('play', () => {
 
   const player = new Audio('./audio/beat1.mp3')
   const player2 = new Audio('./audio/beat2.mp3')
+
+  const speech = new Speech()
+  speech.init({
+    volume: 1,
+    rate: 1,
+    pitch: 1,
+    lang: 'zh-CN',
+  })
 
   player.volumn = 1
   player2.volumn = 1
@@ -50,6 +60,7 @@ export const usePlayStore = defineStore('play', () => {
     player2.currentTime = 0;
     player2.pause()
     rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
+    speech.pause()
     if (timer) {
       clearTimeout(timer)
       timer = null
@@ -74,6 +85,7 @@ export const usePlayStore = defineStore('play', () => {
     console.log('播放节拍：', beat)
     beatCount.value = 0
     heavy = true
+    // speech.setPitch(1)
     playRhythm()
   }
   
@@ -100,6 +112,7 @@ export const usePlayStore = defineStore('play', () => {
     // 调整播放倍速
       player.playbackRate = Math.max(1, Math.min(10, speed / rhythmRate))
       player2.playbackRate = player.playbackRate
+      speech.setRate(player.playbackRate)
 
     const rhythmItemIndex = beatCount.value % rhythm.length 
     // 播放音频
@@ -112,14 +125,7 @@ export const usePlayStore = defineStore('play', () => {
     )
     if (note) {
       // 播放
-      if (heavy) {
-        player.currentTime = 0;
-        player.play()
-        heavy = false
-      } else {
-        player2.currentTime = 0;
-        player2.play()
-      }
+      playVoice()
     }
     // 计算间隔时间
     const oneBeatTime = ONE_MINUTE / speed
@@ -161,6 +167,32 @@ export const usePlayStore = defineStore('play', () => {
       timer2 = setTimeout(() => {
         rhythmCircleStyle.value = 'transform: scale(0); transition: none; opacity: 0;'
       }, styleTime)
+    }
+  }
+
+  function playVoice () {
+    const voice = useVoiceStore().voice
+    console.log('voice: ', voice)
+    if (voice === 'human') {
+      const text = rhythmCount.value === 0 ? (beatCount.value + 1) : (rhythmCount.value + 1)
+      speech.speak({
+        text: '' + text,
+        queue: false
+      })
+      if (heavy) {
+        heavy = false
+        speech.setPitch(0.5)
+      }
+    } else {
+      if (heavy) {
+        player.currentTime = 0;
+        player.play()
+        heavy = false
+        speech.setPitch(0.5)
+      } else {
+        player2.currentTime = 0;
+        player2.play()
+      }
     }
   }
 
